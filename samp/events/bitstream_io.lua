@@ -169,7 +169,7 @@ mod.compressedFloat = {
 		elseif value > 1 then
 			value = 1
 		end
-		raknetBitStreamWriteInt16(bs, (value + 1) * 32767.5)
+		raknetBitStreamWriteInt16(bs, math.floor((value + 1) * 32767.5))
 	end
 }
 
@@ -219,9 +219,9 @@ mod.normQuat = {
 		raknetBitStreamWriteBool(bs, x < 0)
 		raknetBitStreamWriteBool(bs, y < 0)
 		raknetBitStreamWriteBool(bs, z < 0)
-		raknetBitStreamWriteInt16(bs, math.abs(x) * 65535)
-		raknetBitStreamWriteInt16(bs, math.abs(y) * 65535)
-		raknetBitStreamWriteInt16(bs, math.abs(z) * 65535)
+		raknetBitStreamWriteInt16(bs, math.floor(math.abs(x) * 65535))
+		raknetBitStreamWriteInt16(bs, math.floor(math.abs(y) * 65535))
+		raknetBitStreamWriteInt16(bs, math.floor(math.abs(z) * 65535))
 		-- w is calculated on the target
 	end
 }
